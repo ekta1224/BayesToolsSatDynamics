@@ -1,7 +1,6 @@
-# February 2017 
+# Created February 2017 - Modified October 2017
 # These tools were create to perform the analysis in the
-# following publication, which has been submitted to MNRAS and will be
-# posted to the arXiv in the near future:
+# following publication, which has been accepted to MNRAS.
 
 # Orbits of massive satellite galaxies - II. Bayesian Estimates of the
 # Milky Way and Andromeda masses using high precision astrometry and
@@ -43,22 +42,25 @@ class BayesTools:
         return self.ln_norm(vmax1, vmax, vmaxerr)
 
     def pos_lnweights(self, pos1):
+        ''' Use for low mass satellite analogs '''
         pos = self.pos
         poserr = self.poserr
         return self.ln_norm(pos1, pos, poserr)
 
     def vel_lnweights(self, vel1):
+        ''' Use for low mass satellite analogs '''
         vel = self.vel
         velerr = self.velerr
         return self.ln_norm(vel1, vel, velerr)
 
     def j_lnweights(self, j1):
+        ''' Use for massive and low mass satellite analogs '''
         j = self.j
         jerr = self.jerr
         return self.ln_norm(j1, j, jerr)
 
     def vmaxj_lnweights(self, vmax1, j1):
-        ''' Momentum Likelihood: Eq. 10 '''
+        ''' Momentum Likelihood: Eq. 10  (massive satellite analogs)'''
         j = self.j
         jerr = self.jerr
         vmax = self.vmax
@@ -66,7 +68,7 @@ class BayesTools:
         return self.ln_norm(vmax1, vmax, vmaxerr) + self.ln_norm(j1, j, jerr)
 
     def vmaxposvel_lnweights(self, vmax1, pos1, vel1):
-        ''' Instantaneous Likelihood: Eq. 8 '''
+        ''' Instantaneous Likelihood: Eq. 8 (massive satellite analogs)'''
         pos = self.pos
         poserr = self.poserr
         vel = self.vel
